@@ -74,11 +74,11 @@ body {
     padding: 80px 0 60px;
     text-align: center;
     position: relative;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(212, 175, 55, 0.1) 100%);
+    background: #000000;
 }
 
 .hero-content {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -191,67 +191,122 @@ body {
     letter-spacing: 1px;
 }
 
+/* Image Section Styles - УВЕЛИЧЕНА ШИРИНА */
+.image-section {
+    padding: 40px 0;
+    background: #000000;
+    text-align: center;
+}
+
+.content-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px #B8860B;
+    
+    /* Увеличенная ширина для десктопов */
+    width: 100%;
+    max-width: 1200px; /* Увеличено с предыдущего значения */
+    margin: 0 auto;
+    display: block;
+}
+
+/* Специальные стили для больших экранов */
+@media (min-width: 1200px) {
+    .content-image {
+        max-width: 1400px; /* Еще больше на очень широких экранах */
+        width: 95%; /* Занимает 95% ширины контейнера */
+    }
+}
+
+@media (min-width: 1400px) {
+    .content-image {
+        max-width: 1600px; /* Максимальная ширина для огромных экранов */
+        width: 90%;
+    }
+}
+
 /* Core Assets Section Styles */
 .core-assets-section {
     padding: 100px 0;
-    background: rgba(255, 255, 255, 0.02);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000000;
 }
 
 .assets-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 16px;
-    letter-spacing: 1px;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(45deg, #D4AF37, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .section-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #ccc;
     margin-bottom: 30px;
     font-weight: 400;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 .divider {
-    width: 80px;
-    height: 3px;
+    width: 100px;
+    height: 4px;
     background: linear-gradient(45deg, #D4AF37, #FFD700);
     margin: 0 auto;
     border-radius: 2px;
 }
 
-.assets-grid {
+/* Process Grid */
+.process-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
+    gap: 25px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-.asset-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 40px 30px;
+.process-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 18px;
+    padding: 45px 25px;
     text-align: center;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    min-height: 200px;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 340px;
+    height: auto;
 }
 
-.asset-card::before {
+.process-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.process-card::after {
     content: '';
     position: absolute;
     top: 0;
@@ -263,46 +318,139 @@ body {
     transition: opacity 0.3s ease;
 }
 
-.asset-card:hover {
+.process-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+    box-shadow: 
+        0 25px 50px rgba(212, 175, 55, 0.3),
+        0 0 0 1px rgba(212, 175, 55, 0.1);
     border-color: rgba(212, 175, 55, 0.4);
-    background: rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
 }
 
-.asset-card:hover::before {
+.process-card:hover::before {
+    left: 100%;
+}
+
+.process-card:hover::after {
     opacity: 1;
 }
 
-.asset-content {
+/* ИДЕАЛЬНО КРУГЛЫЕ иконки процесса */
+.process-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 25px;
+    background: linear-gradient(135deg, #D4AF37, #B8860B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #000;
+    position: relative;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    /* Гарантия идеального круга */
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+}
+
+.process-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(135deg, #D4AF37, #FFD700);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.6;
+    filter: blur(12px);
+    transition: all 0.4s ease;
+}
+
+.process-card:hover .process-icon {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.process-card:hover .process-icon::before {
+    opacity: 0.8;
+    filter: blur(15px);
+}
+
+.process-content {
     position: relative;
     z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-grow: 1;
 }
 
-.asset-title {
-    font-size: 1.4rem;
-    font-weight: 600;
+.process-title {
+    font-size: 1.5rem;
+    font-weight: 700;
     color: #fff;
-    margin-bottom: 15px;
-    letter-spacing: 0.5px;
+    margin: 0;
+    letter-spacing: 0.4px;
     position: relative;
+    text-align: center;
+    line-height: 1.4;
 }
 
-.asset-description {
-    color: #ccc;
-    font-size: 1rem;
-    line-height: 1.6;
+.process-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(45deg, #D4AF37, #FFD700);
+    border-radius: 2px;
+}
+
+.process-description {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.7;
     text-align: center;
     margin: 0;
-    opacity: 0.9;
+    font-weight: 400;
+    max-width: 250px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.step-number {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: rgba(212, 175, 55, 0.15);
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.process-card:hover .step-number {
+    color: rgba(212, 175, 55, 0.25);
+    transform: scale(1.15);
 }
 
 /* Features Section Styles */
 .features-section {
     padding: 100px 0;
-    background: rgba(255, 255, 255, 0.02);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000000;
 }
 
 .features-header {
@@ -328,6 +476,10 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .feature-card::before {
@@ -378,9 +530,10 @@ body {
     margin-left: -1em;
 }
 
+/* ИДЕАЛЬНО КРУГЛЫЕ иконки для фич */
 .feature-icon {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     margin: 0 auto 20px;
     background: linear-gradient(45deg, #D4AF37, #FFD700);
     border-radius: 50%;
@@ -388,122 +541,44 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    font-size: 24px;
+    font-size: 2rem;
     color: #000;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    /* Гарантия идеального круга */
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
 }
 
 .feature-icon::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
     background: linear-gradient(45deg, #D4AF37, #FFD700);
     border-radius: 50%;
     z-index: -1;
-    opacity: 0.6;
-    filter: blur(5px);
+    opacity: 0.5;
+    filter: blur(8px);
+    transition: all 0.3s ease;
 }
 
 .feature-card:hover .feature-icon {
     transform: scale(1.1) rotate(5deg);
-    transition: transform 0.3s ease;
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
-.features-cta-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 80px;
-    padding-top: 50px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-}
-
-.features-cta-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(45deg, #D4AF37, #FFD700);
-}
-
-.features-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 25px;
-    background: linear-gradient(45deg, #D4AF37, #B8860B);
-    color: #000;
-    padding: 25px 40px;
-    border-radius: 15px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.5rem;
-    transition: all 0.4s ease;
-    border: none;
-    cursor: pointer;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
-    min-width: 360px;
-    justify-content: center;
-    margin: 0 auto;
-}
-
-.features-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.7s ease;
-}
-
-.features-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.5);
-    color: #000;
-}
-
-.features-btn:hover::before {
-    left: 100%;
-}
-
-.features-btn:active {
-    transform: translateY(-1px) scale(1.01);
-}
-
-.btn-text {
-    position: relative;
-    z-index: 2;
-    font-size: 1.2rem;
-}
-
-.btn-icon {
-    position: relative;
-    z-index: 2;
-    transition: transform 0.4s ease;
-    font-size: 1.1rem;
-}
-
-.features-btn:hover .btn-icon {
-    transform: translateX(6px);
+.feature-card:hover .feature-icon::before {
+    opacity: 0.7;
+    filter: blur(10px);
 }
 
 /* Reviews Slider Section */
 .reviews-slider-section {
     padding: 100px 0;
-    background: rgba(255, 255, 255, 0.02);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000000;
 }
 
 .reviews-header {
@@ -524,7 +599,7 @@ body {
 
 .slider-track {
     display: flex;
-    transition: transform 0.6s ease-in-out; /* Увеличена скорость перехода */
+    transition: transform 0.6s ease-in-out;
     height: 500px;
 }
 
@@ -642,104 +717,163 @@ body {
     right: 20px;
 }
 
-/* Slider Indicators */
-.slider-indicators {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 90%;
-}
-
-.slider-indicator {
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.slider-indicator span {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: transparent;
-    transition: all 0.3s ease;
-}
-
-.slider-indicator.active {
-    background: rgba(212, 175, 55, 0.6);
-    transform: scale(1.2);
-}
-
-.slider-indicator.active span {
-    background: linear-gradient(45deg, #D4AF37, #FFD700);
-}
-
-.slider-indicator:hover {
-    transform: scale(1.2);
-    background: rgba(212, 175, 55, 0.4);
-}
-
-/* Progress Bar */
-.slider-progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px;
-    background: linear-gradient(45deg, #D4AF37, #FFD700);
-    width: 0%;
-    transition: width 8s linear;
-    z-index: 5;
-}
-
-.slider-container:hover .slider-progress {
-    animation-play-state: paused;
-}
-
-/* Image Section Styles */
-.image-section {
-    padding: 40px 0;
-    background: rgba(0, 0, 0, 0.1);
+/* Results Section Styles */
+.results-section {
+    padding: 100px 0;
+    background: #000000;
     text-align: center;
 }
 
-.content-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px #B8860B;
+.results-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.results-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #D4AF37, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.results-divider {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(45deg, #D4AF37, #FFD700);
+    margin: 0 auto 40px;
+    border-radius: 2px;
+}
+
+.results-description {
+    font-size: 1.4rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.results-features {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.result-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.result-feature:hover {
+    transform: translateY(-5px);
+}
+
+/* ИДЕАЛЬНО КРУГЛЫЕ иконки для результатов */
+.result-feature i {
+    font-size: 2.5rem;
+    color: #D4AF37;
+    background: rgba(212, 175, 55, 0.1);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+    /* Гарантия идеального круга */
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+}
+
+.result-feature:hover i {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+.result-feature span {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Final CTA Section Styles */
+.final-cta-section {
+    padding: 100px 0;
+    background: #000000;
+    text-align: center;
+    position: relative;
+}
+
+.final-cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.final-cta-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #D4AF37, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.final-cta-subtitle {
+    font-size: 1.4rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.final-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(45deg, #D4AF37, #B8860B);
+    color: #000;
+    padding: 18px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.final-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    color: #000;
 }
 
 /* Footer Section Styles */
 .footer-section {
-    background: rgba(10, 10, 10, 0.98);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000000;
     padding: 60px 0 30px;
     margin-top: 0;
     position: relative;
     text-align: center;
-}
-
-.footer-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
 }
 
 .footer-content {
@@ -820,14 +954,13 @@ body {
 
 .footer-copyright {
     padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #888;
     font-size: 0.9rem;
     text-align: center;
     width: 100%;
 }
 
-/* Scroll to Top Button */
+/* Scroll to Top Button - ИДЕАЛЬНО КРУГЛЫЙ */
 .scroll-to-top {
     position: fixed;
     bottom: 30px;
@@ -849,6 +982,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Гарантия идеального круга */
+    aspect-ratio: 1 / 1;
 }
 
 .scroll-to-top:hover {
@@ -867,20 +1002,35 @@ body {
     transform: translateY(0);
 }
 
-/* Responsive Design */
+/* Адаптивность для мобильных устройств */
 @media (max-width: 1200px) {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
     }
     
-    .assets-grid {
+    .process-grid {
         grid-template-columns: repeat(2, 1fr);
         max-width: 800px;
+        gap: 25px;
     }
     
     .hero-title {
         font-size: 2.8rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .final-cta-title {
+        font-size: 2.5rem;
+    }
+    
+    /* Для планшетов - немного уменьшаем картинку */
+    .content-image {
+        max-width: 1000px;
+        width: 90%;
     }
 }
 
@@ -889,26 +1039,28 @@ body {
         font-size: 2.2rem;
     }
     
-    .features-btn {
-        padding: 18px 36px;
-        font-size: 1.2rem;
-        min-width: 260px;
+    .final-cta-title {
+        font-size: 2.2rem;
     }
     
-    .btn-text {
-        font-size: 1.1rem;
+    .content-image {
+        max-width: 900px;
+        width: 95%;
     }
 }
 
 @media (max-width: 900px) {
-    .assets-grid,
+    .process-grid,
     .features-grid {
         grid-template-columns: 1fr;
         max-width: 500px;
+        gap: 25px;
     }
     
-    .asset-card {
-        padding: 30px 25px;
+    .process-card,
+    .feature-card {
+        padding: 35px 25px;
+        min-height: 320px;
     }
     
     .slider-container {
@@ -919,13 +1071,13 @@ body {
         height: 400px;
     }
     
-    .slider-indicators {
-        gap: 6px;
+    .final-cta-section {
+        padding: 80px 0;
     }
     
-    .slider-indicator {
-        width: 8px;
-        height: 8px;
+    .content-image {
+        max-width: 800px;
+        width: 100%;
     }
 }
 
@@ -951,7 +1103,8 @@ body {
     
     .core-assets-section,
     .features-section,
-    .reviews-slider-section {
+    .reviews-slider-section,
+    .results-section {
         padding: 80px 0;
     }
     
@@ -963,34 +1116,38 @@ body {
         font-size: 1.1rem;
     }
     
-    .asset-card,
-    .feature-card {
+    .process-card {
         padding: 30px 25px;
+        min-height: 300px;
     }
     
-    .asset-title,
+    .feature-card {
+        padding: 30px 25px;
+        min-height: 260px;
+    }
+    
+    .process-title,
     .feature-title {
         font-size: 1.3rem;
     }
     
-    .features-cta-container {
-        margin-top: 60px;
-        padding-top: 40px;
+    /* Адаптивность для круглых иконок */
+    .process-icon {
+        width: 90px;
+        height: 90px;
+        font-size: 2.2rem;
     }
     
-    .features-btn {
-        padding: 16px 32px;
-        font-size: 1.1rem;
-        min-width: 240px;
-        gap: 12px;
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
     }
     
-    .btn-text {
-        font-size: 1rem;
-    }
-    
-    .btn-icon {
-        font-size: 1rem;
+    .result-feature i {
+        width: 80px;
+        height: 80px;
+        font-size: 2.2rem;
     }
     
     .slider-track {
@@ -1023,6 +1180,47 @@ body {
         font-size: 0.8rem;
     }
     
+    .results-title {
+        font-size: 2.5rem;
+    }
+    
+    .results-description {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+    }
+    
+    .results-features {
+        gap: 40px;
+    }
+    
+    .result-feature i {
+        font-size: 2.5rem;
+        width: 80px;
+        height: 80px;
+    }
+    
+    .result-feature span {
+        font-size: 1rem;
+    }
+    
+    .final-cta-section {
+        padding: 60px 0;
+    }
+    
+    .final-cta-title {
+        font-size: 2rem;
+    }
+    
+    .final-cta-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+    }
+    
+    .final-cta-button {
+        padding: 14px 32px;
+        font-size: 1rem;
+    }
+    
     .footer-content {
         flex-direction: column;
         text-align: center;
@@ -1046,6 +1244,43 @@ body {
     .footer-tagline {
         font-size: 1rem;
     }
+    
+    /* Адаптивность для карточек процесса */
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .process-card {
+        padding: 25px 20px;
+        min-height: 280px;
+    }
+    
+    .process-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .process-title {
+        font-size: 1.2rem;
+    }
+    
+    .process-description {
+        font-size: 1rem;
+    }
+    
+    .step-number {
+        top: 20px;
+        right: 20px;
+        font-size: 1.3rem;
+    }
+    
+    .content-image {
+        max-width: 700px;
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1066,7 +1301,8 @@ body {
     
     .core-assets-section,
     .features-section,
-    .reviews-slider-section {
+    .reviews-slider-section,
+    .results-section {
         padding: 60px 0;
     }
     
@@ -1078,42 +1314,43 @@ body {
         font-size: 1rem;
     }
     
-    .asset-card,
-    .feature-card {
+    .process-card {
         padding: 25px 20px;
+        min-height: 260px;
     }
     
-    .asset-title,
+    .feature-card {
+        padding: 25px 20px;
+        min-height: 240px;
+    }
+    
+    .process-title,
     .feature-title {
         font-size: 1.2rem;
     }
     
-    .asset-description,
+    .process-description,
     .feature-list li {
         font-size: 0.95rem;
     }
     
-    .features-cta-container {
-        margin-top: 50px;
-        padding-top: 35px;
+    /* Адаптивность для круглых иконок */
+    .process-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
     }
     
-    .features-btn {
-        padding: 14px 28px;
-        font-size: 1rem;
-        min-width: 220px;
-        width: 90%;
-        max-width: 300px;
-        gap: 10px;
-        border-radius: 12px;
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
     }
     
-    .btn-text {
-        font-size: 0.95rem;
-    }
-    
-    .btn-icon {
-        font-size: 0.9rem;
+    .result-feature i {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
     }
     
     .slider-track {
@@ -1126,22 +1363,51 @@ body {
         font-size: 0.9rem;
     }
     
-    .slider-indicators {
-        bottom: 15px;
-        gap: 5px;
-    }
-    
-    .slider-indicator {
-        width: 7px;
-        height: 7px;
-    }
-    
     .review-stars i {
         font-size: 0.9rem;
     }
     
     .slide-counter {
         font-size: 0.75rem;
+    }
+    
+    .results-title {
+        font-size: 2rem;
+    }
+    
+    .results-description {
+        font-size: 1.1rem;
+    }
+    
+    .results-features {
+        gap: 30px;
+        flex-direction: column;
+    }
+    
+    .result-feature i {
+        font-size: 2rem;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .final-cta-section {
+        padding: 50px 0;
+    }
+    
+    .final-cta-title {
+        font-size: 1.8rem;
+    }
+    
+    .final-cta-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+    
+    .final-cta-button {
+        padding: 12px 28px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
     }
     
     .footer-section {
@@ -1163,5 +1429,57 @@ body {
     .footer-copyright {
         font-size: 0.8rem;
         padding-top: 25px;
+    }
+    
+    /* Адаптивность для карточек процесса */
+    .process-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .process-card {
+        padding: 20px 15px;
+        min-height: 240px;
+    }
+    
+    .process-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+    }
+    
+    .process-title {
+        font-size: 1.1rem;
+    }
+    
+    .process-description {
+        font-size: 0.9rem;
+    }
+    
+    .step-number {
+        top: 15px;
+        right: 15px;
+        font-size: 1.2rem;
+    }
+    
+    .content-image {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* Специальные медиа-запросы для очень больших экранов */
+@media (min-width: 1600px) {
+    .content-image {
+        max-width: 1800px;
+        width: 85%;
+    }
+}
+
+@media (min-width: 2000px) {
+    .content-image {
+        max-width: 2000px;
+        width: 80%;
     }
 }
